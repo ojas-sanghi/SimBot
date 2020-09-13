@@ -66,7 +66,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-    // we only use this project at runtime when doing simulations
+    // we only use this for tests, not for deploying to the robot
     testImplementation 'com.github.cpostbitbuckets.FRCSim:simulator:master-SNAPSHOT'
     testImplementation 'com.github.cpostbitbuckets.FRCSim:simulator-ctre:master-SNAPSHOT'
 
