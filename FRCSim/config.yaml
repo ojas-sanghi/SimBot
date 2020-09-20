@@ -1,4 +1,21 @@
-hideFollowers: true
+hideFollowers: false
+defaults:
+  # motor ids for use in the sim
+  ids:
+    elevator: 1
+    leftArm: 2
+    rightArm: 3
+  # CTRE bag motor specs
+  bag:
+    stallTorque: 0.4
+    stallCurrent: 53.0
+    voltage: 12.0
+    maxRPM: 13180
+    mass: 0.32
+    diameter: 0.0404
+  elevatorGearing: 1
+  leftArmGearing: 1
+  rightArmGearing: 1
 driveBase:
   gearRatio: 10.88888888888889
   positionalSimType: Physics
@@ -17,24 +34,48 @@ driveBase:
     - 2.551095849721741
 transmissions:
 - motors:
-  - id: 1
-    name: BAG (1)
-    model: BAG
-    kt: 0.0
-    kv: 0.0
-    resistance: 0.0
-    inertia: 0.0
-    leftDrive: false
-    rightDrive: false
-    stallTorque: 0.4
-    stallCurrent: 53.0
-    voltage: 12.0
-    maxRPM: 13180
-    mass: 0.32
-    diameter: 0.0404
-    encoderCountsPerRevolution: 1024
-  gearRatio: 1.0
+    - id: '{{ defaults.ids.elevator }}' # this is our elevator motor, so configure it by id
+      name: 'elevator ({{ defaults.ids.elevator }})' # give the motor a helpful name for the UI
+      model: bag # We are using a bag for our elevator
+
+      # all these specs are from our defaults entry above for the bag motor
+      stallTorque: '{{ defaults.bag.stallTorque }}'
+      stallCurrent: '{{ defaults.bag.stallCurrent }}'
+      voltage: '{{ defaults.bag.voltage }}'
+      maxRPM: '{{ defaults.bag.maxRPM }}'
+      mass: '{{ defaults.bag.mass * 10 }}'
+      diameter: '{{ defaults.bag.diameter }}'
+  # setup the gear ratio of the elevator for simulation
+  gearRatio: '{{ defaults.elevatorGearing }}'
   efficiency: 1.0
+- motors:
+    - id: '{{ defaults.ids.leftArm }}' # this is our leftArm motor, so configure it by id
+      name: 'leftArm ({{ defaults.ids.leftArm }})' # give the motor a helpful name for the UI
+      model: bag # We are using a bag for our leftArm
+
+      # all these specs are from our defaults entry above for the bag motor
+      stallTorque: '{{ defaults.bag.stallTorque }}'
+      stallCurrent: '{{ defaults.bag.stallCurrent }}'
+      voltage: '{{ defaults.bag.voltage }}'
+      maxRPM: '{{ defaults.bag.maxRPM }}'
+      mass: '{{ defaults.bag.mass * 10 }}'
+      diameter: '{{ defaults.bag.diameter }}'
+    - id: '{{ defaults.ids.rightArm }}' # this is our rightArm motor, so configure it by id
+      name: 'rightArm ({{ defaults.ids.rightArm }})' # give the motor a helpful name for the UI
+      model: bag # We are using a bag for our rightArm
+
+      # all these specs are from our defaults entry above for the bag motor
+      stallTorque: '{{ defaults.bag.stallTorque }}'
+      stallCurrent: '{{ defaults.bag.stallCurrent }}'
+      voltage: '{{ defaults.bag.voltage }}'
+      maxRPM: '{{ defaults.bag.maxRPM }}'
+      mass: '{{ defaults.bag.mass * 10 }}'
+      diameter: '{{ defaults.bag.diameter }}'
+
+      # setup the gear ratio of the leftArm for simulation
+  gearRatio: '{{ defaults.leftArmGearing }}'
+  efficiency: 1.0
+
 solenoids: []
 startPosition:
   x: 1.54
