@@ -16,11 +16,11 @@ public class ElevatorSubsystem extends SubsystemBase {
         // create motor, add tuning constants
         elevatorMotor = new WPI_TalonFX(1);
         elevatorMotor.selectProfileSlot(0, 0);
-        elevatorMotor.config_kP(0, 0.005);
-        elevatorMotor.config_kD(0, 0);
+        elevatorMotor.config_kP(0, 5);
+        elevatorMotor.config_kD(0, 1000);
 
         // for testing, don't uncomment
-        //elevatorMotor.set(ControlMode.Position, 4000);
+        elevatorMotor.set(ControlMode.Position, 4000);
     }
 
     private ArmsSubsystem arms;
