@@ -20,7 +20,7 @@ public class ElevatorSubsystem extends SubsystemBase {
         elevatorMotor.config_kD(0, 1000);
 
         // for testing, don't uncomment
-        elevatorMotor.set(ControlMode.Position, 4000);
+        //elevatorMotor.set(ControlMode.Position, 4000);
     }
 
     private ArmsSubsystem arms;
