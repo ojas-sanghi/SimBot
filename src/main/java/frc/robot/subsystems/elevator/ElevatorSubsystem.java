@@ -48,6 +48,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     private ElevatorLevels currentLevel = ElevatorLevels.FLOOR;
     public void moveTo(ElevatorLevels level) {
         elevatorMotor.set(ControlMode.Position, level.getTicks());
+        currentLevel = level;
     }
 
     public ElevatorLevels getCurrentLevel() { return currentLevel; }
