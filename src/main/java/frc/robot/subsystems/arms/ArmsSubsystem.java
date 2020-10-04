@@ -50,4 +50,12 @@ public class ArmsSubsystem extends SubsystemBase {
         // toggle boolean flag
         areTheyOpen = !areTheyOpen;
     }
+
+    public boolean areArmsOpen() {
+        return areTheyOpen;
+    }
+
+    public boolean areArmsClosed() {
+        return !areTheyOpen;
+    }
 }

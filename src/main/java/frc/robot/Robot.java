@@ -53,6 +53,11 @@ public class Robot extends TimedRobot {
             () -> arms.toggle(), // lambda expression for command
             arms // requires arm subsystem
         ));
+
+        JoystickButton[] buttonsList = {levelFloor, levelOne, levelTwo};
+
+        LevelFloorCommand floorCommand = new LevelFloorCommand(elevator, arms, buttonsList);
+
     }
 
     public static Robot win() {
