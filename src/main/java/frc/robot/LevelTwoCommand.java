@@ -26,7 +26,7 @@ public class LevelTwoCommand extends CommandBase {
 
     @Override
     public void execute() {
-        elevator.moveTo(ElevatorLevels.ONE);
+        elevator.moveTo(ElevatorLevels.TWO);
     }
 
     @Override
